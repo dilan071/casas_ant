@@ -18,8 +18,7 @@ const numerito = document.querySelector("#numerito");
 botonesCategorias.forEach(boton => boton.addEventListener("click", () => {
     aside.classList.remove("aside-visible");
 }))
-
-
+    
 function cargarProductos(productosElegidos) {
 
     contenedorProductos.innerHTML = "";
@@ -42,6 +41,28 @@ function cargarProductos(productosElegidos) {
 
     actualizarBotonesAgregar();
 }
+
+const buscarNombre = document.querySelector("#buscar-nombre");
+const precioMin = document.querySelector("#precio-min");
+const precioMax = document.querySelector("#precio-max");
+const botonFiltrar = document.querySelector("#filtrar");
+
+botonFiltrar.addEventListener("click", () => {
+    const nombre = buscarNombre.value.toLowerCase();
+    const min = parseFloat(precioMin.value) || 0;
+    const max = parseFloat(precioMax.value) || Infinity;
+
+    const productosFiltrados = productos.filter(producto => {
+        const nombreCoincide = producto.titulo.toLowerCase().includes(nombre);
+        const precioCoincide = producto.precio >= min && producto.precio <= max;
+        return nombreCoincide && precioCoincide;
+    });
+
+    cargarProductos(productosFiltrados);
+});
+
+
+
 
 
 botonesCategorias.forEach(boton => {

@@ -51,6 +51,7 @@ aside {
     font-size: 1.3rem;
 }
 
+
 .menu {
     display: flex;
     flex-direction: column;
@@ -381,9 +382,7 @@ main {
     .carrito-acciones {
         flex-wrap: wrap;
         row-gap: 1rem;
-    }
-    
-
+    }    
 }
 
 
